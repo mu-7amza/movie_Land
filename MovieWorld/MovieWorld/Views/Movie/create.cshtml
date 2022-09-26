@@ -1,0 +1,126 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "ADD Movie";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index"><i class="badge-info bi-film"></i>MovieWorld</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+                <ul class="navbar-nav flex-grow-1 float-end">
+
+
+                    @*    <a class="nav-link " asp-controller="User" asp-action="Index" role="button" data-toggle="button">
+                    <i class="bi bi-gear"> </i>Management
+                    </a>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-gear"></i> Management</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Movie" asp-action="create">ADD Movies</a></li>
+                            <li><a class="dropdown-item" asp-controller="user" asp-action="index">Manage Users</a></li>
+
+
+                        </ul>
+                    </li>
+                    <a class="nav-link" asp-controller="Movie" asp-action="register" role="button" data-toggle="button">
+                        <i class="bi bi-person-plus-fill"></i> Register
+                    </a>
+                    <a class="nav-link text-dark" asp-controller="Movie" asp-action="login" role="button" data-toggle="button">
+                        <i class="bi bi-box-arrow-left"></i> Logout
+                    </a>
+
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>ADD New Movie</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2" style="margin-bottom:10px">
+                <form asp-action="create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <label asp-for="Name" class="control-label">Movie Title</label>
+                        <input asp-for="Name" class="form-control" />
+
+                    </div>
+                    <p>
+                    </p>
+
+                    <div class="form-group">
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                        <label asp-for="Category" class="control-label">Movie Category</label>
+                        <select class="form-select" aria-label="Default select example" asp-for="Category" class="form-control">
+                            <option asp-for="Category" value="--Select--">--Select--</option>
+                            <option asp-for="Category" value="Action">Action</option>
+                            <option asp-for="Category" value="Fantasy">Fantasy</option>
+                            <option asp-for="Category" value="Sport">Sport</option>
+                            <option asp-for="Category" value="Comedian">Comedian</option>
+                            <option asp-for="Category" value="Drama">Drama</option>
+                            <option asp-for="Category" value="Adventure">Adventure</option>
+                        </select>
+                    </div>
+                  <br />
+                 @*   <div class="form-group">
+                        
+                        <label asp-for="Category" class="control-label">Movie Category :</label>
+                        <input asp-for="Category" class="form-control" />
+
+                    </div>*@
+                @*    <div class="form-group">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <label asp-for="Description" class="control-label">Description</label>
+                        <input asp-for="Description" class="form-control" />
+                        
+                    </div>*@
+
+                    <div class="input-group">
+                        <span class="input-group-text" asp-validation-for="Description">Description</span>
+                        
+                        <textarea asp-for="Description" class="form-control" aria-label="Discreption"></textarea>
+                    </div>
+                <p>
+              </p>
+
+                    <div class="form-group">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        <label asp-for="ImageUrl" class="control-label"></label>
+                        <input asp-for="ImageUrl" class="form-control" />
+
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+ }
+

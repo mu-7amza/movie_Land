@@ -1,0 +1,102 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Movie Details";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index"><i class="badge-info bi-film"></i>MovieWorld</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+                <ul class="navbar-nav flex-grow-1 float-end">
+
+
+                    @*    <a class="nav-link " asp-controller="User" asp-action="Index" role="button" data-toggle="button">
+                    <i class="bi bi-gear"> </i>Management
+                    </a>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-gear"></i> Management</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Movie" asp-action="create">ADD Movies</a></li>
+                            <li><a class="dropdown-item" asp-controller="user" asp-action="index">Manage Users</a></li>
+
+
+                        </ul>
+                    </li>
+                    <a class="nav-link" asp-controller="User" asp-action="create" role="button" data-toggle="button">
+                        <i class="bi bi-person-plus-fill"></i> Register
+                    </a>
+                    <a class="nav-link text-dark" asp-controller="Movie" asp-action="login" role="button" data-toggle="button">
+                        <i class="bi bi-box-arrow-left"></i> Logout
+                    </a>
+
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Details for @Model.Name</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="text-center">
+                    <img class="border-info rounded-circle" src="@Model.ImageUrl" alt="@Model.Name style="max-width:150px" />
+                </div>
+
+
+
+                <div class="form-group">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <label asp-for="Name" class="control-label">Movie Title</label>
+                    <input asp-for="Name" class="form-control" readonly />
+
+                </div>
+                <p></p>
+                <div class="form-group">
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                    <label asp-for="Category" class="control-label">Movie Category</label>
+                    <input asp-for="Category" class="form-control" readonly />
+
+                </div>
+                <p></p>
+                <div class="input-group">
+                    <span class="input-group-text" asp-validation-for="Description">Description</span>
+
+                    <textarea asp-for="Description" class="form-control" aria-label="Discreption" readonly></textarea>
+                </div>
+                
+
+                <div class="form-group text-center">
+                    <img id="ProfilePicturePreview" />
+                </div>
+               
+
+                <br />
+            
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+ }
+

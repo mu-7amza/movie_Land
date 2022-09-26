@@ -1,0 +1,81 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "List Of Users";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index"><i class="badge-info bi-film"></i>MovieWorld</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div>
+                <ul class="navbar-nav flex-grow-1 float-end">
+
+
+                    @*    <a class="nav-link " asp-controller="User" asp-action="Index" role="button" data-toggle="button">
+                    <i class="bi bi-gear"> </i>Management
+                    </a>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-gear"></i> Management</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Movie" asp-action="create">ADD Movies</a></li>
+                            <li><a class="dropdown-item" asp-controller="user" asp-action="index">Manage Users</a></li>
+
+
+                        </ul>
+                    </li>
+                    <a class="nav-link" asp-controller="Movie" asp-action="register" role="button" data-toggle="button">
+                        <i class="bi bi-person-plus-fill"></i> Register
+                    </a>
+                    <a class="nav-link text-dark" asp-controller="Movie" asp-action="login" role="button" data-toggle="button">
+                        <i class="bi bi-box-arrow-left"></i> Logout
+                    </a>
+
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Profile Picture</th>
+                    <th>Full Name</th>
+                    <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle"> 
+                            <img class="rounded-circle" src="@item.profileUrl" alt="@item.Fname @item.Lname" style="max-width:150px" />
+                           
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Fname)
+                            @Html.DisplayFor(modelItem => item.Lname)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td class="align-middle">
+  
+                            <a class="btn btn-outline-info" asp-action="details" asp-route-id="@item.Id"><i class="bi bi-eye"></i> Details</a> |
+                            <a class="btn btn-danger text-white" asp-action="delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i> Delete</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
